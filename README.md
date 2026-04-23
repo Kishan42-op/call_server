@@ -2,6 +2,44 @@
 
 This server generates LiveKit tokens securely using your **LiveKit Cloud API Key** and **API Secret**.
 
+## Deploy to Vercel (recommended for public access)
+
+Vercel uses **serverless functions**, so this repo includes Vercel endpoints:
+
+- `GET /api/health`
+- `POST /api/token`
+
+### 1) Push this `token-server/` folder to GitHub
+
+Make sure you do **not** commit `.env`.
+
+### 2) Import into Vercel
+
+- Vercel Dashboard → **Add New Project**
+- Select your GitHub repo
+- Framework preset: **Other**
+
+### 3) Set environment variables in Vercel
+
+Vercel Project → **Settings → Environment Variables**
+
+- `LIVEKIT_API_KEY`
+- `LIVEKIT_API_SECRET`
+
+Deploy again after setting them.
+
+### 4) Test after deploy
+
+- `https://<your-project>.vercel.app/api/health` → `{"ok":true}`
+
+### 5) Use from Android
+
+In the Android app, set **Token Server URL** to:
+
+- `https://<your-project>.vercel.app/api`
+
+(The app appends `/token` automatically.)
+
 ### 1) Install Node.js
 
 Install Node.js LTS from the official site. Then restart your terminal.
