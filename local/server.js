@@ -82,8 +82,7 @@ app.post("/token-debug", async (req, res) => {
   if (!h || !p) {
     return res.status(500).json({ error: "Token does not look like a JWT." });
   }
-  const decode = (part) =>
-    JSON.parse(Buffer.from(part, "base64url").toString("utf8"));
+  const decode = (part) => JSON.parse(Buffer.from(part, "base64url").toString("utf8"));
 
   res.json({
     token,
@@ -91,8 +90,7 @@ app.post("/token-debug", async (req, res) => {
       header: decode(h),
       payload: decode(p),
     },
-    note:
-      "decoded payload should show iss=LIVEKIT_API_KEY, sub=identity, video.room=room",
+    note: "decoded payload should show iss=LIVEKIT_API_KEY, sub=identity, video.room=room",
   });
 });
 
